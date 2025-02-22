@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root {
+    --primary-color: #000501;
+    --secondary-color: #004E89;
+    --thir-color: #2DD881;
+    --fourth-color: #FFD23F;
+    --fifth-color: #FFFBFE;
+    --font-size: 16px;
+    --padding: 10px;
+  }
+  
+  /* Mejora la tipografía */
+  html {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Hace que los enlaces no tengan subrayado por defecto */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  li {
+    list-style: none;
+  }
+  
+  /* Estilos para el header */	
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*background-color: var(--primary-color);*/
+    padding: 20px;
+  }
+  .nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    gap:10px;
+    @media screen {
+        
+    }
+  }
+  
+  .boton-hamburguesa {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .boton-hamburguesa span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    margin-bottom: 5px;
+  }
+	
+  .logo {
+    width: 100px;
+    height: auto;
+  }
+  .section {
+    height: 100vh; /* Altura de la pantalla */
+    max-width: 80%; /* Ancho máximo del 80% de la pantalla */
+    margin: 0 auto; /* Centrar horizontalmente */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }

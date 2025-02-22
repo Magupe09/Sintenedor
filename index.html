@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sin Tenedor</title>
+  <link href='/style.css' rel='stylesheet'>
+</head>
+<body>
+  <header class="header">
+    <img class="logo" src="./assets/logoSintenedor.webp" alt="Logo">
+    <nav class="menu" class="ocultar">
+      <ul class="nav">
+        <li><a href="#menu">Menù</a></li>
+        <li><a href="#carrito">Carrito</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="boton-hamburguesa" onclick="activarMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+  <section id="menu" class="section">
+    <h2>Menu de pizzas</h2>
+    <div class="pizzas-container"></div>
+  </section>
+  <section id="carrito" class="section">
+    <h2>Mi pedido</h2>
+    <ul class="lista-carrito"></ul>
+    <p>Total: <span class="total">0</span> COP</p>
+  </section>
+  <section id="contacto" class="section"></section>
+  <script defer type="text/javascript" src="/main.js"></script>
+</body>
+</html>
