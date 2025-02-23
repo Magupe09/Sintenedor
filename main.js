@@ -1,6 +1,13 @@
-// Add JS here
-const activarMenu=()=>{
-    console.log("soy un boton")
-    const menu=document.querySelector('.menu')
-    menu.classList.toggle('ocultar'); // Alterna entre agregar y eliminar la clase "ocultar"
-}
+const boton=document.querySelector('.boton-hamburguesa');
+const nav=document.querySelector('.nav');
+
+boton.addEventListener('click',()=>{
+    nav.classList.toggle('mostrar-nav');
+})
+window.addEventListener('resize', () => {
+    const nav = document.querySelector('.nav');
+    const ventanaAnchura = window.innerWidth;
+    if (ventanaAnchura >= 769) {
+      nav.classList.remove('mostrar-nav');
+    }
+  });
