@@ -18,6 +18,9 @@
     font-size: 16px;
     font-family: Arial, sans-serif;
   }
+  body{
+    background-color: var(--primary-color);
+  }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
   a {
@@ -28,30 +31,81 @@
     list-style: none;
   }
   
-  /* Estilos para el header */	
+  /* Estilos para el header
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*background-color: var(--primary-color);*/
     padding: 20px;
   }
   .nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 20px;
-    gap:10px;
+    gap:20px;
   
   }
+   .logo {
+    width: 100px;
+    height: auto;
+  }
+  .nav a {
+    font-size: 1.5rem; 
+    padding: 10px 20px; 
+}
+   */	
+/* Estilos para pantallas entre 768px y 1024px */
+@media (min-width: 768px) and (max-width: 1500px) {
+  .header {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* Hace que el header ocupe toda la pantalla */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .logo {
+      width: 100%; /* El logo ocupa toda la pantalla */
+      max-width: none; /* Evita que tenga un límite de tamaño */
+      height: 100%; /* Ocupará toda la altura disponible */
+      object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+  }
+
+  .nav {
+      position: fixed; /* Fija el menú en la parte superior */
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7); /* Hace que el fondo del nav sea semitransparente */
+      z-index: 1000; /* Se asegura de que el nav esté por encima del logo */
+  }
+
+  .nav a {
+      font-size: 1.5rem; /* Aumenta el tamaño del texto */
+      color: white; /* Cambia el color del texto */
+      padding: 10px 20px;
+  }
+}
+
+
+  .nav li {
+    flex-grow: 1; /* Hace que los elementos crezcan proporcionalmente */
+    text-align: center; /* Centra el texto */
+}
+
+
+
   .mostrar-nav {
   display: block;
 }
   
-  .logo {
-    width: 100px;
-    height: auto;
-  }
+ 
   .section {
     height: 100vh; /* Altura de la pantalla */
     max-width: 80%; /* Ancho máximo del 80% de la pantalla */
@@ -59,52 +113,77 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    color: var(--fifth-color);
   }
 
   
+
   @media (max-width: 768px) {
-     
-    .menu {
-    position: relative;
+    .header {
+      display: flex;
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      flex-direction: column; /* Asegura que los elementos estén en columna si es necesario */
+      text-align: center; /* Asegura que el texto también esté centrado */
+      padding: 0 0 20px 0; /* Solo deja margen en la parte inferior */
+      min-height: 150px; /* Se asegura de que tenga un tamaño mínimo */
   }
-    
-  .boton-hamburguesa {
+
+  .logo {
+        width: 100%; /* Ocupará todo el ancho disponible */
+        max-width: 400px; /* Máximo tamaño permitido */
+        height: auto; /* Mantiene la proporción */
+  }
+    .menu {
+      position: relative;
+    }
+    .boton-hamburguesa {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
     position: fixed;
     bottom: 20px;
     right: 20px;
+    width: 40px;
+    height: 40px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 6px;
-  }
-  
-  .boton-hamburguesa span {
-    display: block;
+}
+
+.boton-hamburguesa span {
+    position: absolute;
     width: 30px;
-    height: 2px;
+    height: 3px;
     background-color: #000;
-    margin-bottom: 5px;
     transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-  .nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-  
-  
-  
+}
+
+.boton-hamburguesa span:nth-child(1) {
+  transform: translateY(-10px);
+}
+
+.boton-hamburguesa span:nth-child(2) {
+  opacity: 1;
+}
+
+.boton-hamburguesa span:nth-child(3) {
+  transform: translateY(10px);
+}
+
+.nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+   /*
   .nav {
     display: flex;
     flex-direction: column;
@@ -120,88 +199,77 @@
     background-color: var(--fourth-color);
     transition: top 0.7s ease-in-out 0.2s;
   }
-  .nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(1) {
-    transform: rotate(45deg) translateY(6px);
-}
-
-.nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(2) {
-    opacity: 0;
-}
-
-.nav.mostrar-nav ~ .boton-hamburguesa span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-6px);
-}
-
-  
-  
   .nav.mostrar-nav {
     top: 0;
   }
+  */
+  .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    position: fixed;
+    top: 0; /* Lo movemos más arriba de la pantalla */
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--fourth-color);
+    visibility: hidden;
+    opacity: 0; /* Lo hacemos invisible */
+    transform: translateY(-50px); /* Lo movemos aún más arriba */
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.30, 1), opacity 1s ease-in-out;
+}
+.nav.mostrar-nav {
+  visibility: visible; /* Se hace visible */
+  opacity: 1; /* Aparece */
+  transform: translateY(0); /* Baja suavemente a su posición */
+}
+.nav li {
+  list-style: none;
+  font-size: 1.8rem; /* Aumentamos el tamaño */
+  font-weight: bold;
+  text-transform: uppercase; /* Letras en mayúscula para mejor visibilidad */
+  padding: 15px 30px; /* Más espacio alrededor */
+  text-align: center;
+  width: 80%; /* Ajustamos el ancho para que se vea mejor */
+  border-radius: 15px; /* Bordes redondeados */
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+.nav li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+}
+
+/*
+.nav.mostrar-nav {
+    top: 0;
+    opacity: 1; 
+    transform: translateY(0); 
+
   .nav:not(.mostrar-nav) {
     display: none;
-  }
+  }*/
 
   .nav li:hover{
       background-color: var(--secondary-color);
+      transition: background-color 0.3s ease-in-out;
   }
-    
+  
+  
 	 }
 
 
-
-  
-
-/* 
-  @media (max-width: 768px) {
-   
-    .menu {
-      position: relative;
-    }
-    
-    .boton-hamburguesa {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      /*transform: translateY(40px);
-    }
-    
-    .boton-hamburguesa span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background-color: #000;
-      margin-bottom: 5px;
-    }
-    
+   @media (max-width: 320px) {
     .nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      position: fixed;
-      top: -100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--fourth-color);
-      transition: top 0.7s ease-in-out 0.2s;
+        gap: 10px; /* Reducir la separación */
+        padding: 10px; /* Ajustar el relleno */
     }
-    .nav li:hover{
-      background-color: var(--secondary-color);
+    .nav li {
+        font-size: 0.9rem; /* Reducir un poco el tamaño */
     }
-    
-    .nav.mostrar-nav {
-      top: 0;
-    }
-    
-    .nav:not(.mostrar-nav) {
-      display: none;
-    }
-  }
-  */
+}
