@@ -19,7 +19,7 @@
     font-family: Arial, sans-serif;
   }
   body{
-    background-color: var(--primary-color);
+    background-color: var(--fifth-color);
   }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
@@ -59,11 +59,12 @@
 @media (min-width: 768px) and (max-width: 1500px) {
   .header {
       position: relative;
-      width: 100%;
+      width: 80%;
       height: 100vh; /* Hace que el header ocupe toda la pantalla */
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0 auto;
   }
 
   .logo {
@@ -71,6 +72,7 @@
       max-width: none; /* Evita que tenga un límite de tamaño */
       height: 100%; /* Ocupará toda la altura disponible */
       object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+      
   }
 
   .nav {
@@ -289,7 +291,7 @@
 }
 .pizza {
   width: 100%; /* Ocupará el 100% del ancho del contenedor */
-  max-width: 300px; /* No crecerá más de 300px */
+  max-width: 400px; /* No crecerá más de 300px */
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 10px;
