@@ -91,17 +91,49 @@ window.addEventListener('resize', () => {
           .join("")}
       </ul>
       <label for="tamaño">Tamaño:</label>
-<select id="tamaño">
-  <option value="personal">Personal</option>
-  <option value="mediana">Mediana</option>
-  <option value="familiar">Familiar</option>
-</select>
-<button id="agregar-carrito">Agregar al carrito</button>
+         <select id="tamaño">
+           <option value="personal">Personal</option>
+           <option value="mediana">Mediana</option>
+           <option value="familiar">Familiar</option>
+         </select>
+       <button id="agregar-carrito">Agregar al carrito</button>
 
       `;
+      const agregarCarrito = document.getElementById("agregar-carrito");
+      agregarCarrito.addEventListener("click", () => {
+        const tamañoSeleccionado=document.getElementById("tamaño").value;
+        agregarAlCarrito(pizzaSeleccionada.nombre, pizzaSeleccionada.imagen,1, tamañoSeleccionado);
+       
+        });
+      
       document.getElementById("cerrar-modal").addEventListener("click", () => {
         contenedorSeleccion.style.display = "none";
       });
       
     })
   })
+
+  
+  let carrito = []; 
+
+function agregarAlCarrito(nombre, imagen,precio,tamaño) {
+  if (carrito.some(pizza => pizza.nombre === nombre)) {
+    const pizzaExistente = carrito.find(pizza => pizza.nombre === nombre  && pizza.tamaño === tamaño);
+    if(pizzaExistente){
+      pizzaExistente.cantidad++;
+    }else{
+      const pizza = { // Los datos internos no cambian
+        nombre: nombre,
+        imagen: imagen,
+        precio: precio,
+        tamaño:tamaño,
+        cantidad: 1 // Este sí puede cambiar luego
+      };
+      carrito.push(pizza);
+      console.log(carrito);
+    }
+  
+  }
+ 
+  
+}
