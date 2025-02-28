@@ -19,7 +19,7 @@
     font-family: Arial, sans-serif;
   }
   body{
-    background-color: var(--fifth-color);
+    background-color: black;
   }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
@@ -30,6 +30,7 @@
   li {
     list-style: none;
   }
+  
   
   /* Estilos para el header
   .header {
@@ -92,6 +93,10 @@
       font-size: 1.5rem; /* Aumenta el tamaño del texto */
       color: white; /* Cambia el color del texto */
       padding: 10px 20px;
+  }
+  .nav a:hover {
+    color: var(--fourth-color);
+    transition: color 0.3s ease-in-out;
   }
 }
 
@@ -276,7 +281,13 @@
     }
 }
 /* Estilos sections*/
-
+.menu-pizzas{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 .grid-pizzas{
   display: flex;
   flex-direction: column;
@@ -315,4 +326,13 @@
     width: 100%; /* Para que ocupe bien su celda */
     max-width: 250px; /* Ajuste de tamaño */
   }
+}
+.contenedor-seleccion {
+  width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: none;
 }

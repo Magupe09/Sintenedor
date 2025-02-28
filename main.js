@@ -1,5 +1,5 @@
 const pizzasData = {
-  margarita: {
+  marinera: {
     nombre: "Marinera",
     imagen: "./assets/marinera.webp",
     ingredientes: ["Tomate", "Mozzarella", "Albahaca fresca"],
@@ -9,7 +9,7 @@ const pizzasData = {
     imagen: "./assets/peperoni.webp",
     ingredientes: ["Tomate", "Mozzarella", "Pepperoni"],
   },
-  cuatroQuesos: {
+  quesos: {
     nombre: "Cuatro Quesos",
     imagen: "./assets/cuatro-quesos.webp",
     ingredientes: ["Mozzarella", "Gorgonzola", "Parmesano", "Ricotta"],
@@ -39,6 +39,8 @@ const nav=document.querySelector('.nav');
 boton.addEventListener('click',()=>{
     nav.classList.toggle('mostrar-nav');
 })
+
+
 window.addEventListener('resize', () => {
     const nav = document.querySelector('.nav');
     const ventanaAnchura = window.innerWidth;
@@ -47,50 +49,59 @@ window.addEventListener('resize', () => {
     }
   });
 
-  
+
+  const pizza = document.querySelectorAll('.pizza')
   const contenedorSeleccion = document.querySelector('.contenedor-seleccion');
-  const actualizarSeleccion = (clave) => {
-   
-    const pizzaSeleccionada = pizzasData[clave]; // Obtenemos la info de la pizza
-    
-    if (!pizzaSeleccionada) return; // Si no existe, no hacemos nada
   
-    contenedorSeleccion.innerHTML = `
-      <img src="${pizzaSeleccionada.imagen}" alt="${pizzaSeleccionada.nombre}">
-      <h3>${pizzaSeleccionada.nombre}</h3>
-      <p><strong>Ingredientes:</strong> ${pizzaSeleccionada.ingredientes.join(', ')}</p>
-      <label>
-        <input type="radio" name="tamano" value="personal" checked> Personal
-      </label>
-      <label>
-        <input type="radio" name="tamano" value="familiar"> Familiar
-      </label>
-      <button>Añadir al carrito</button>
-    `;
-  };
 
-  const formatearClave = (nombre) => {
-    return nombre
-      .toLowerCase() // 1️⃣ Convertimos todo el texto a minúsculas
-      .split(' ') // 2️⃣ Dividimos la cadena en un array separando por los espacios
-      .map((palabra, index) =>
-        index === 0 
-          ? palabra // 3️⃣ Si es la primera palabra, la dejamos en minúsculas
-          : palabra.charAt(0).toUpperCase() + palabra.slice(1) // 4️⃣ Las demás palabras las convertimos a CamelCase
-      )
-      .join(''); // 5️⃣ Unimos todas las palabras en una sola cadena sin espacios
-  };
-
-  const pizzas=document.querySelectorAll('.pizza');
-
-  pizzas.forEach((pizza)=>{
-    pizza.addEventListener('click',()=>{   
-      const nombre = pizza.querySelector('h3').textContent;   
-      const clavePizza= formatearClave(nombre);
+  pizza.forEach(pizza => {
+    pizza.addEventListener('click', () => {
+      const rect = pizza.getBoundingClientRect();
+      console.log(rect);
       
-       actualizarSeleccion(clavePizza)
- 
-     })
-     
-    
+      contenedorSeleccion.style.position = 'fixed'; 
+      contenedorSeleccion.style.left = '50%';
+      contenedorSeleccion.style.top = '50%';
+      contenedorSeleccion.style.transform = 'translate(-50%, -50%)';
+      contenedorSeleccion.style.zIndex = '1000';
+      contenedorSeleccion.style.display = 'block';
+
+      
+
+      const nombre = pizza.querySelector('h3').textContent;
+      const pizzaSeleccionada = pizzasData[nombre.toLowerCase()];
+      contenedorSeleccion.innerHTML = `
+       <button id="cerrar-modal" style="
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;">X</button>
+      <img src="${pizzaSeleccionada.imagen}" alt="${pizzaSeleccionada.nombre}">
+      <h2>${pizzaSeleccionada.nombre}</h2>
+      <ul>
+        ${pizzaSeleccionada.ingredientes
+          .map((ingrediente) => `<li>${ingrediente}</li>`)
+          .join("")}
+      </ul>
+      <label for="tamaño">Tamaño:</label>
+<select id="tamaño">
+  <option value="personal">Personal</option>
+  <option value="mediana">Mediana</option>
+  <option value="familiar">Familiar</option>
+</select>
+<button id="agregar-carrito">Agregar al carrito</button>
+
+      `;
+      document.getElementById("cerrar-modal").addEventListener("click", () => {
+        contenedorSeleccion.style.display = "none";
+      });
+      
+    })
   })
