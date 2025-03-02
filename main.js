@@ -187,6 +187,22 @@ contenedorCarrito.addEventListener('click', (event) => {
   if (event.target.classList.contains('eliminar')) {   
     const nombre = event.target.dataset.nombre;
     const tamaño = event.target.dataset.tamaño;
-    console.log(`Eliminar: ${nombre}, Tamaño: ${tamaño}`);
+    //console.log(`Eliminar: ${nombre}, Tamaño: ${tamaño}`);
+
+    const pizzaIndex = carrito.findIndex(pizza => pizza.nombre === nombre && pizza.tamaño === tamaño);
+
+    // Si la pizza existe, eliminarla del carrito
+    if (pizzaIndex !== -1) {
+      const cantidadPizza = carrito[pizzaIndex].cantidad;
+      if(cantidadPizza>1){
+        carrito[pizzaIndex].cantidad--;
+      }else{
+        carrito.splice(pizzaIndex, 1);
+      }
+      actualizarCarrito();
+      console.log(carrito)
+    }
   }
 });
+
+  

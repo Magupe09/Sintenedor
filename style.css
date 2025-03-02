@@ -18,8 +18,10 @@
     font-size: 16px;
     font-family: Arial, sans-serif;
   }
-  body{
-    background-color:black;
+  body {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--fifth-color);
   }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
@@ -336,6 +338,39 @@
   text-align: center;
   display: none;
 }
-.section{
-  height: 100vh;
+.section-carrito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100vh;
+}
+.carrito-icono {
+  width: 54px; /* ajusta el ancho */
+  height: 54px; /* ajusta el alto */
+}
+.carrito{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.item-carrito {
+/* Suggested code may be subject to a license. Learn more: ~LicenseLog:3803649853. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  width: 80%; /* Ajusta el ancho para que se centre correctamente */
+}
+.item-carrito img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block; /* Asegúrate de que la imagen sea un bloque */
 }
