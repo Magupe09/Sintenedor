@@ -19,7 +19,7 @@
     font-family: Arial, sans-serif;
   }
   body{
-    background-color: black;
+    background-color:black;
   }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
@@ -335,4 +335,7 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: none;
+}
+.section{
+  height: 100vh;
 }

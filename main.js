@@ -28,6 +28,11 @@ const pizzasData = {
     nombre: "Vegetariana",
     imagen: "./assets/vegetariana.webp",
     ingredientes: ["Tomate", "Mozzarella", "Pimientos", "Champiñones", "Cebolla", "Aceitunas"],
+  },
+  precios:{
+    personal:10,
+    mediana:15,
+    familiar:20 
   }
 };
 
@@ -57,7 +62,7 @@ window.addEventListener('resize', () => {
   pizza.forEach(pizza => {
     pizza.addEventListener('click', () => {
       const rect = pizza.getBoundingClientRect();
-      console.log(rect);
+      
       
       contenedorSeleccion.style.position = 'fixed'; 
       contenedorSeleccion.style.left = '50%';
@@ -102,8 +107,10 @@ window.addEventListener('resize', () => {
       const agregarCarrito = document.getElementById("agregar-carrito");
       agregarCarrito.addEventListener("click", () => {
         const tamañoSeleccionado=document.getElementById("tamaño").value;
-        agregarAlCarrito(pizzaSeleccionada.nombre, pizzaSeleccionada.imagen,1, tamañoSeleccionado);
-       
+        const precioSeleccionado = pizzasData.precios[tamañoSeleccionado];
+
+        agregarAlCarrito(pizzaSeleccionada.nombre, pizzaSeleccionada.imagen,1, tamañoSeleccionado,precioSeleccionado);
+        actualizarCarrito();
         });
       
       document.getElementById("cerrar-modal").addEventListener("click", () => {
@@ -116,8 +123,9 @@ window.addEventListener('resize', () => {
   
   let carrito = []; 
 
-function agregarAlCarrito(nombre, imagen,precio,tamaño) {
-  if (carrito.some(pizza => pizza.nombre === nombre)) {
+function agregarAlCarrito(nombre, imagen, cantidad, tamaño,precio) {
+  
+ // if (carrito.some(pizza => pizza.nombre === nombre)) {
     const pizzaExistente = carrito.find(pizza => pizza.nombre === nombre  && pizza.tamaño === tamaño);
     if(pizzaExistente){
       pizzaExistente.cantidad++;
@@ -125,15 +133,60 @@ function agregarAlCarrito(nombre, imagen,precio,tamaño) {
       const pizza = { // Los datos internos no cambian
         nombre: nombre,
         imagen: imagen,
-        precio: precio,
+        cantidad: cantidad,
         tamaño:tamaño,
-        cantidad: 1 // Este sí puede cambiar luego
+        precio:precio
+        
       };
-      carrito.push(pizza);
-      console.log(carrito);
+     
+    carrito.push(pizza);
+    
     }
+    console.log(carrito);
   
-  }
- 
+ // }
   
 }
+
+const actualizarCarrito = () => {
+  const contenedorCarrito = document.querySelector('.carrito');
+  contenedorCarrito.innerHTML = ''; // Limpiar antes de renderizar
+  
+  if (!contenedorCarrito) {
+    console.error("⚠️ No se encontró el contenedor del carrito.");
+    return;
+  }
+  
+  contenedorCarrito.innerHTML = ''; // Limpia antes de renderizar
+
+  if (carrito.length === 0) {
+    contenedorCarrito.innerHTML = '<p>El carrito está vacío</p>';
+    return;
+  }
+
+
+  let contenido = ''; // Variable para acumular el HTML
+
+  carrito.forEach(pizza => {
+    contenido += `
+      <div class="item-carrito">
+        <img src="${pizza.imagen}" alt="${pizza.nombre}">
+        <h2>${pizza.nombre} - ${pizza.tamaño}</h2>
+        <p>Cantidad: ${pizza.cantidad}</p>
+        <p>Precio: $${pizza.precio * pizza.cantidad}</p>
+        <button class="eliminar" data-nombre="${pizza.nombre}" data-tamaño="${pizza.tamaño}">Eliminar</button>
+      </div>
+    `;
+  });
+
+  contenedorCarrito.innerHTML = contenido;
+};
+
+const contenedorCarrito = document.querySelector('.carrito');
+contenedorCarrito.addEventListener('click', (event) => {
+  if (event.target.classList.contains('eliminar')) {   
+    const nombre = event.target.dataset.nombre;
+    const tamaño = event.target.dataset.tamaño;
+    console.log(`Eliminar: ${nombre}, Tamaño: ${tamaño}`);
+  }
+});
