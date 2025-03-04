@@ -171,7 +171,7 @@ const actualizarCarrito = () => {
     contenido += `
       <div class="item-carrito">
         <img src="${pizza.imagen}" alt="${pizza.nombre}">
-        <h2>${pizza.nombre} - ${pizza.tamaño}</h2>
+        <h2>${pizza.nombre}  ${pizza.tamaño}</h2>
         <p>Cantidad: ${pizza.cantidad}</p>
         <p>Precio: $${pizza.precio * pizza.cantidad}</p>
         <button class="eliminar" data-nombre="${pizza.nombre}" data-tamaño="${pizza.tamaño}">Eliminar</button>
@@ -204,5 +204,9 @@ contenedorCarrito.addEventListener('click', (event) => {
     }
   }
 });
-
+const botonPago=document.querySelector('.pago');
+botonPago.addEventListener('click',()=>{
+ console.log("Gracias por comprar")
+ botonPago.disabled = true;
+})
   

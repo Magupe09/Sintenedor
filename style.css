@@ -21,7 +21,7 @@
   body {
     max-width: 800px;
     margin: 0 auto;
-    background-color: var(--fifth-color);
+    background-color: var(--primary-color);
   }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
@@ -33,61 +33,36 @@
     list-style: none;
   }
   
-  
-  /* Estilos para el header
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  .nav{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 20px;
-    gap:20px;
-  
-  }
-   .logo {
-    width: 100px;
-    height: auto;
-  }
-  .nav a {
-    font-size: 1.5rem; 
-    padding: 10px 20px; 
-}
-   */	
-/* Estilos para pantallas entre 768px y 1024px */
 @media (min-width: 768px) and (max-width: 1500px) {
   .header {
       position: relative;
-      width: 80%;
+      width: 800px;
       height: 100vh; /* Hace que el header ocupe toda la pantalla */
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto;
+      margin: -100px auto;
   }
 
   .logo {
-      width: 100%; /* El logo ocupa toda la pantalla */
-      max-width: none; /* Evita que tenga un límite de tamaño */
-      height: 100%; /* Ocupará toda la altura disponible */
-      object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+     width: 100%; /* Ocupa todo el ancho de la pantalla */
+     height: 100vh; /* Ocupa toda la altura de la pantalla */
+     object-fit: cover; /* Asegúrate de que el video se ajuste a la pantalla */
       
   }
 
   .nav {
       position: fixed; /* Fija el menú en la parte superior */
       top: 0;
-      left: 0;
-      width: 100%;
+      left: 50%;
+      transform: translateX(-50.2%);
+      width: 800px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.7); /* Hace que el fondo del nav sea semitransparente */
+     
+      /* Hace que el fondo del nav sea semitransparente */
       z-index: 1000; /* Se asegura de que el nav esté por encima del logo */
   }
 
@@ -192,26 +167,6 @@
   transform: rotate(-45deg);
 }
 
-   /*
-  .nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-    padding: 20px;
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--fourth-color);
-    transition: top 0.7s ease-in-out 0.2s;
-  }
-  .nav.mostrar-nav {
-    top: 0;
-  }
-  */
   .nav {
     display: flex;
     flex-direction: column;
@@ -253,16 +208,6 @@
   width: 100%;
   padding: 15px 0;
 }
-
-/*
-.nav.mostrar-nav {
-    top: 0;
-    opacity: 1; 
-    transform: translateY(0); 
-
-  .nav:not(.mostrar-nav) {
-    display: none;
-  }*/
 
   .nav li:hover{
       background-color: var(--secondary-color);
@@ -340,11 +285,15 @@
 }
 .section-carrito{
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 19px;
+  padding-top: 20px;
   gap: 20px;
-  min-height: 100vh;
+  height: auto;
+  background-color: var(--fifth-color);
+ 
 }
 .carrito-icono {
   width: 54px; /* ajusta el ancho */
@@ -356,21 +305,53 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  width: 100%;
+  background-color: var(--fourth-color);
 }
 .item-carrito {
-/* Suggested code may be subject to a license. Learn more: ~LicenseLog:3803649853. */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin: 0 auto;
-  width: 80%; /* Ajusta el ancho para que se centre correctamente */
+  justify-content: space-evenly;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color:var(--secondary-color);
+  max-width: 400px;
+  height: auto;
+}
+.item-carrito h2,p{
+  text-align: center;
+  font-size: 1.5rem;
 }
 .item-carrito img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 0 auto;
-  display: block; /* Asegúrate de que la imagen sea un bloque */
+}
+.eliminar{
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  font-size: 18px;
+}
+
+.pago {
+  background-color: #4CAF50; /* Color de fondo */
+  color: #fff; /* Color de texto */
+  padding: 10px 20px; /* Espacio entre el texto y el borde */
+  border: none; /* No hay borde */
+  border-radius: 5px; /* Esquinas redondeadas */
+  cursor: pointer; /* Cursor en forma de mano */
+}
+
+.pago:hover {
+  background-color: #3e8e41; /* Color de fondo al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+  .item-carrito h2,p{
+    font-size: 1rem;
+  }
 }
