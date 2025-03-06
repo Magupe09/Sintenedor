@@ -75,6 +75,7 @@
     color: var(--fourth-color);
     transition: color 0.3s ease-in-out;
   }
+
 }
 
 
@@ -101,8 +102,7 @@
   }
 
   
-
-  @media (max-width: 768px) {
+ @media (max-width: 768px) {
     .header {
       display: flex;
       justify-content: center; /* Centra horizontalmente */
@@ -191,6 +191,9 @@
   transform: translateY(0); /* Baja suavemente a su posición */
 }
 .nav li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   list-style: none;
   font-size: 1.8rem; /* Aumentamos el tamaño */
   font-weight: bold;
@@ -213,9 +216,11 @@
       background-color: var(--secondary-color);
       transition: background-color 0.3s ease-in-out;
   }
+  .grid-pizzas {
+    grid-template-columns: repeat(2, 1fr);
+  }
   
-  
-	 }
+ }
 
 
    @media (max-width: 320px) {
@@ -226,6 +231,7 @@
     .nav li {
         font-size: 0.9rem; /* Reducir un poco el tamaño */
     }
+   
 }
 /* Estilos sections*/
 .menu-pizzas{
@@ -235,6 +241,31 @@
   align-items: center;
   gap: 20px;
 }
+.grid-pizzas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
+  gap: 20px;
+  justify-items: center; /* Centra cada pizza en su celda */
+}
+.grid-pizzas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+@media (max-width: 992px) {
+  .grid-pizzas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .grid-pizzas {
+    grid-template-columns: 1fr;
+  }
+}
+/*
 .grid-pizzas{
   display: flex;
   flex-direction: column;
@@ -242,11 +273,13 @@
   align-items: center;
   gap: 20px;
   max-width: 800px ;
-  width: 100%; /* Para que no se salga en pantallas pequeñas */
-  margin: auto; /* Centrar en el viewport */
+  width: 100%; 
+  margin: auto; 
   padding: 10px;
 
 }
+
+*/
 .pizza {
   width: 100%; /* Ocupará el 100% del ancho del contenedor */
   max-width: 400px; /* No crecerá más de 300px */
@@ -261,13 +294,7 @@
   border-radius: 8px ;
 }
 
-@media (min-width: 768px) {
-  .grid-pizzas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
-    gap: 20px;
-    justify-items: center; /* Centra cada pizza en su celda */
-  }
+@media (max-width: 768px) {
 
   .pizza {
     width: 100%; /* Para que ocupe bien su celda */
@@ -275,7 +302,7 @@
   }
 }
 .contenedor-seleccion {
-  width: 400px;
+  max-width: 400px;
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -283,6 +310,10 @@
   text-align: center;
   display: none;
 }
+.section-carrito h2{
+  color: var(--fifth-color);
+}
+/*
 .section-carrito{
   display: flex;
   flex-direction: column;
@@ -292,21 +323,51 @@
   padding-top: 20px;
   gap: 20px;
   height: auto;
-  background-color: var(--fifth-color);
+  background-color: var(--primary-color);
  
 }
+  */
+
+  .section-carrito {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 90vh;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    display: none;
+    overflow-y: auto;
+    z-index: 1001;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 .carrito-icono {
   width: 54px; /* ajusta el ancho */
   height: 54px; /* ajusta el alto */
+  fill: var(--fourth-color);
 }
 .carrito{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 5px;
   width: 100%;
-  background-color: var(--fourth-color);
+  background-color: var(--primary-color);
+  justify-content: center;
+}
+.carrito.solo-un-elemento {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
 }
 .item-carrito {
   display: flex;
@@ -315,17 +376,19 @@
   justify-content: space-evenly;
   padding: 10px;
   border-bottom: 1px solid #ccc;
-  background-color:var(--secondary-color);
-  max-width: 400px;
+  background-color:var(--fifth-color);
+  max-width: 300px;
   height: auto;
 }
 .item-carrito h2,p{
   text-align: center;
   font-size: 1.5rem;
+  color: var(--primary-color);
 }
 .item-carrito img {
   max-width: 100%;
   height: auto;
+  border-radius: 20px;
 }
 .eliminar{
   background-color: red;
@@ -354,4 +417,12 @@
   .item-carrito h2,p{
     font-size: 1rem;
   }
+  
+.carrito{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 5px;
+  width: 100%;
+  background-color: var(--primary-color);
+}
 }

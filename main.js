@@ -52,6 +52,12 @@ window.addEventListener('resize', () => {
     if (ventanaAnchura >= 769) {
       nav.classList.remove('mostrar-nav');
     }
+    const contenedorCarrito = document.querySelector('.carrito');
+    if (carrito.length === 1) {
+      contenedorCarrito.classList.add('solo-un-elemento');
+    } else {
+      contenedorCarrito.classList.remove('solo-un-elemento');
+    }
   });
 
 
@@ -163,6 +169,11 @@ const actualizarCarrito = () => {
     contenedorCarrito.innerHTML = '<p>El carrito está vacío</p>';
     return;
   }
+  if (carrito.length === 1) {
+    contenedorCarrito.classList.add('solo-un-elemento');
+  } else {
+    contenedorCarrito.classList.remove('solo-un-elemento');
+  }
 
 
   let contenido = ''; // Variable para acumular el HTML
@@ -209,4 +220,15 @@ botonPago.addEventListener('click',()=>{
  console.log("Gracias por comprar")
  botonPago.disabled = true;
 })
-  
+const botonCerrarCarrito = document.getElementById("cerrar-carrito");
+
+botonCerrarCarrito.addEventListener("click", () => {
+  const sectionCarrito = document.querySelector(".section-carrito");
+  sectionCarrito.style.display = "none";
+});
+const navLinkCarrito = document.querySelector('a[href="#carrito"]');
+const sectionCarrito = document.querySelector('.section-carrito');
+
+navLinkCarrito.addEventListener('click', () => {
+  sectionCarrito.style.display = 'flex';
+});
