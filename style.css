@@ -34,6 +34,16 @@
   }
   
 @media (min-width: 768px) and (max-width: 1500px) {
+  .notificacion{
+    position: absolute;
+    top: 94px;
+    left: 12px;
+    background-color: red;
+    color: white;
+    padding: 2px;
+    border-radius: 10px;
+  }
+  
   .header {
       position: relative;
       width: 800px;
@@ -50,29 +60,34 @@
      object-fit: cover; /* Asegúrate de que el video se ajuste a la pantalla */
       
   }
-
   .nav {
-      position: fixed; /* Fija el menú en la parte superior */
-      top: 0;
-      left: 50%;
-      transform: translateX(-50.2%);
-      width: 800px;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      padding: 20px;
-     
-      /* Hace que el fondo del nav sea semitransparente */
-      z-index: 1000; /* Se asegura de que el nav esté por encima del logo */
-  }
+    gap: 39px;
+    position: fixed;
+    top: -77px;
+    left: 50px;
+    transform: translateY(64.8%);
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
 
+}
+
+
+  
   .nav a {
+      display: block;
       font-size: 1.5rem; /* Aumenta el tamaño del texto */
       color: white; /* Cambia el color del texto */
       padding: 10px 20px;
   }
   .nav a:hover {
     color: var(--fourth-color);
+    background-color: var(--fifth-color);
+    border-radius: 10px;
     transition: color 0.3s ease-in-out;
   }
 
@@ -219,6 +234,16 @@
   .grid-pizzas {
     grid-template-columns: repeat(2, 1fr);
   }
+  .notificacion{
+    position: absolute;
+    top: 256px;
+    left: 309px;
+    background-color: red;
+    color: white;
+    padding: 2px;
+    border-radius: 10px;
+  }
+  
   
  }
 
@@ -258,9 +283,20 @@
   .grid-pizzas {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
 @media (max-width: 450px) {
+  .notificacion{
+    position: absolute;
+    top: 236px;
+    left: 189px;
+    background-color: red;
+    color: white;
+    padding: 2px;
+    border-radius: 10px;
+  }
+  
   .grid-pizzas {
     grid-template-columns: 1fr;
   }
@@ -426,3 +462,5 @@
   background-color: var(--primary-color);
 }
 }
+
+/* Estilos de icono de notificación */

@@ -148,6 +148,7 @@ function agregarAlCarrito(nombre, imagen, cantidad, tamaño,precio) {
     carrito.push(pizza);
     
     }
+    actualizarNotificacion();
     console.log(carrito);
   
  // }
@@ -191,6 +192,7 @@ const actualizarCarrito = () => {
   });
 
   contenedorCarrito.innerHTML = contenido;
+  
 };
 
 const contenedorCarrito = document.querySelector('.carrito');
@@ -214,6 +216,7 @@ contenedorCarrito.addEventListener('click', (event) => {
       console.log(carrito)
     }
   }
+  actualizarNotificacion();
 });
 const botonPago=document.querySelector('.pago');
 botonPago.addEventListener('click',()=>{
@@ -232,3 +235,14 @@ const sectionCarrito = document.querySelector('.section-carrito');
 navLinkCarrito.addEventListener('click', () => {
   sectionCarrito.style.display = 'flex';
 });
+
+
+const actualizarNotificacion = ()=>{
+  const notificacion= document.querySelector('.notificacion');
+  if (carrito.length >0 ){
+    notificacion.textContent = carrito.length.toString();
+   // console.log(notificacion.textContent)
+ }else{
+   notificacion.textContent = ' ';
+ }
+}
