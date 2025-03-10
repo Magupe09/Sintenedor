@@ -22,6 +22,7 @@
     max-width: 800px;
     margin: 0 auto;
     background-color: var(--primary-color);
+    color: var(--fifth-color);
   }
   
   /* Hace que los enlaces no tengan subrayado por defecto */
@@ -463,4 +464,80 @@
 }
 }
 
-/* Estilos de icono de notificación */
+/* Estilos de section contacto */
+.seccion-contacto{
+  color: var(--fifth-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--fifth-color);
+}
+.contenedor p h2 {
+  color: var(--fifth-color);
+}
+.formulario-contacto{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.descripcion-seccion{
+  color: var(--fifth-color);
+}
+.detalle-contacto p {
+  color: var(--fifth-color);
+}
+.grupo-formulario input[type="text"] {
+  /* agregar estilos aquí */
+
+  width: 100%;
+  height: 20px; /* ajusta el alto según tus necesidades */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* permite que el usuario ajuste el alto */
+}
+.grupo-formulario input[type="email"]{
+  width: 100%;
+  height: 20px; /* ajusta el alto según tus necesidades */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; 
+}
+
+.formulario-contacto textarea {
+  display: flex;
+  flex-direction:column ;
+  width: 100%;
+  height: 150px; /* ajusta el alto según tus necesidades */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* permite que el usuario ajuste el alto */
+}
+.boton-enviar {
+  background-color: #007bff; /* azul vibrante */
+  color: #fff; /* texto blanco */
+  padding: 10px 20px; /* relleno para dar tamaño */
+  border: none; /* sin borde */
+  border-radius: 5px; /* esquinas redondeadas */
+  cursor: pointer; /* cursor en forma de mano */
+}
+
+.boton-enviar:hover {
+  background-color: #0056b3; /* azul más oscuro al pasar el mouse */
+}

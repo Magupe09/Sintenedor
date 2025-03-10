@@ -85,6 +85,44 @@
     font-size: 18px;
     cursor: pointer;">X</button>
   </section>
+  <section id="contacto" class="seccion-contacto">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">¡Contáctanos!</h2>
+      <p class="descripcion-seccion">¿Tienes alguna pregunta o comentario? ¡No dudes en escribirnos!</p>
+      <div class="informacion-contacto">
+        <div class="detalle-contacto">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Dirección:</span>
+          <p>Calle Falsa 123, Ciudad Ejemplo</p>
+        </div>
+        <div class="detalle-contacto">
+          <i class="fas fa-phone"></i>
+          <span>Teléfono:</span>
+          <p>+57 311 1234567</p>
+        </div>
+        <div class="detalle-contacto">
+          <i class="fas fa-envelope"></i>
+          <span>Correo electrónico:</span>
+          <p>correo@example.com</p>
+        </div>
+      </div>
+      <form id="formulario-contacto" class="formulario-contacto">
+        <div class="grupo-formulario">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="grupo-formulario">
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="grupo-formulario">
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+        <button type="submit" class="boton-enviar">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
   
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
