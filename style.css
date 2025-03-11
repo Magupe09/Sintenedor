@@ -346,6 +346,7 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: none;
+  color: var(--primary-color);
 }
 .section-carrito h2{
   color: var(--fifth-color);
